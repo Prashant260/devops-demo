@@ -28,9 +28,9 @@ jobs:
     - name: Setup kubeconfig
       run: |
         mkdir -p ~/.kube
-        echo "${{secrets.KUBECONFIG }}" > ~/.kube/config
+        echo "${{ secrets.KUBECONFIG }}" > ~/.kube/config
 
-    - name: Deploy to kubernetes
+    - name: Deploy to Kubernetes
       run: |
-        kubectl set image deployment/flask-app \
-        app=${{ secret.DOCKER_USERNAME }}/flask-app:v1
+        kubectl set image deployment/devops-demo \
+        app=${{ secrets.DOCKER_USERNAME }}/flask-app:v1
