@@ -25,7 +25,11 @@ jobs:
     - name: Push Docker Image
       run: docker push ${{ secrets.DOCKER_USERNAME }}/flask-app:v1
 
+    - name: Setup Minikube Context
+      run: |
+        kubectl config use-context minikube
+        kubectl get nodes
+
     - name: Deploy to Kubernetes
       run: |
-        kubectl set image deployment/devops-demo \
-        app=${{ secrets.DOCKER_USERNAME }}/flask-app:v1
+       kubectl set image deployment/devops-demo devops-demo=${{ secrets.DOCKER_USERNAME }}/devops-demo:v1     
