@@ -37,4 +37,4 @@ jobs:
 
     - name: Deploy to Kubernetes
       run: |
-       kubectl set image deployment/devops-demo devops-demo=${{ secrets.DOCKER_USERNAME }}/devops-demo:v1     
+       kubectl set image deployment/devops-demo devops-demo=${{ secrets.DOCKER_USERNAME }}/flask-app:v1   
