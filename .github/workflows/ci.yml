@@ -25,11 +25,6 @@ jobs:
     - name: Push Docker Image
       run: docker push ${{ secrets.DOCKER_USERNAME }}/flask-app:v1
 
-    - name: Setup kubeconfig
-      run: |
-        mkdir -p ~/.kube
-        echo "${{ secrets.KUBECONFIG }}" > $HOME/.kube/config
-
     - name: Deploy to Kubernetes
       run: |
         kubectl set image deployment/devops-demo \
